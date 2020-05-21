@@ -1,0 +1,173 @@
+{% extends "layout.html" %} {% block title %} Order some pizza {% endblock %} {%
+block content %}
+<main class="main-container">
+  <form id="cart-container" action="/order" method="POST">
+    <h2>Pizza Cart</h2>
+
+    <div id="cart-items">
+      <template id="cart-item-template">
+        <div class="cart-item">
+          <h4 class="cart-item-name" id="itemName" >{{ itemName }}</h4>
+          <!-- <input type="hidden" id="itemNameInput"> -->
+          <input type="hidden" name="itemName" id="itemNameInput">
+          <p class="cart-item-quantity" id="itemQuantity" name="itemQuantity" >{{ itemQuantity }}</p>
+          <!-- <input type="hidden" id="itemQuantityInput"> -->
+          <input type="hidden" name="itemQuantity" id="itemQuantityInput">
+          <hr class="cart-item-line" />
+          <p class="cart-item-price" id="itemPrice" name="itemPrice" >{{ itemPrice }}</p>
+          <!-- <input type="hidden" id="itemPriceInput"> -->
+          <input type="hidden" name="itemPrice" id="itemPriceInput">
+        </div>
+      </template>
+    </div>
+    
+    <div class="cart-total">
+      <h3 class="cart-total-head">TOTAL</h3>
+      <p id="cart-total-price" data-price="0" name="totalPrice" >$0.00</p>
+      <input type="hidden" name="totalPrice" id="totalPriceInput">
+    </div>
+    <button type="submit">Place Order</button>
+  </form>
+
+  <div class="order-form">
+    <div class="form-cell">
+      <div class="form-img-wrap">
+        <img
+          src="../static/assets/veg-pixel.jpg"
+          alt="Veg pizza"
+          class="form-img"
+        />
+      </div>
+      <div class="form-description">
+        <label for="veg-pizza" class="form-label">The BIG Veg</label>
+        <p class="form-description-text">
+          Peppers, mushrooms, broccoli, spinach, red onion, sweet potato!
+        </p>
+        <p class="form-price">$12.00</p>
+      </div>
+      <div class="form-input">
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-button">-</button>
+          <div class="stepper-input-wrap">
+            <input
+              type="text"
+              class="stepper-input"
+              value="0"
+              name="veg-pizza"
+            />
+          </div>
+          <button type="button" class="stepper-button">+</button>
+        </div>
+        <button
+          type="button"
+          class="add-cart"
+          data-pizza-name="The BIG Veg"
+          data-price="12"
+        >
+          Add to cart
+        </button>
+      </div>
+    </div>
+
+    <div class="form-cell">
+      <div class="form-img-wrap">
+        <img
+          src="../static/assets/fish-pixel-10.jpg"
+          alt="Fish pizza"
+          class="form-img"
+        />
+      </div>
+      <div class="form-description">
+        <label for="name" class="form-label">Caroline Special</label>
+        <p class="form-description-text">
+          Fish, prawns, mussels, lobster, crab, anchovies, a tomato
+        </p>
+        <p class="form-price">$14.00</p>
+      </div>
+      <div class="form-input">
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-button">-</button>
+          <div class="stepper-input-wrap">
+            <input type="text" class="stepper-input" value="0" />
+          </div>
+          <button type="button" class="stepper-button">+</button>
+        </div>
+        <button
+          type="button"
+          class="add-cart"
+          data-pizza-name="Caroline Special"
+          data-price="14"
+        >
+          Add to cart
+        </button>
+      </div>
+    </div>
+
+    <div class="form-cell">
+      <div class="form-img-wrap">
+        <img
+          src="../static/assets/pepperoni-30.jpg"
+          alt="Pepperoni pizza"
+          class="form-img"
+        />
+      </div>
+      <div class="form-description">
+        <label for="name" class="form-label">Lonely Pepperonly</label>
+        <p class="form-description-text">Just pepperoni all by itself</p>
+        <p class="form-price">$13.00</p>
+      </div>
+      <div class="form-input">
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-button">-</button>
+          <div class="stepper-input-wrap">
+            <input type="text" class="stepper-input" value="0" />
+          </div>
+          <button type="button" class="stepper-button">+</button>
+        </div>
+        <button
+          type="button"
+          class="add-cart"
+          data-pizza-name="Lonely Pepperonly"
+          data-price="13"
+        >
+          Add to cart
+        </button>
+      </div>
+    </div>
+
+    <div class="form-cell">
+      <div class="form-img-wrap">
+        <img
+          src="../static/assets/mush-pixel.jpg"
+          alt="Mushroom pizza"
+          class="form-img"
+        />
+      </div>
+      <div class="form-description">
+        <label for="name" class="form-label">Few mushies on dough</label>
+        <p class="form-description-text">Bag of mush, all you need</p>
+        <p class="form-price">$22.00</p>
+      </div>
+      <div class="form-input">
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-button">-</button>
+          <div class="stepper-input-wrap">
+            <input type="text" class="stepper-input" value="0" />
+          </div>
+          <button type="button" class="stepper-button">+</button>
+        </div>
+        <button
+          type="button"
+          class="add-cart"
+          data-pizza-name="Few mushies on dough"
+          data-price="22"
+        >
+          Add to cart
+        </button>
+      </div>
+    </div>
+
+    <!-- <button type="submit" class="form-submit-button">Go to cart</button> -->
+  </div>
+</main>
+{% endblock %}

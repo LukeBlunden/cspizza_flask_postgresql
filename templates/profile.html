@@ -1,0 +1,32 @@
+{% extends "layout.html" %} {% block title %} Profile {% endblock %} {% block
+content %}
+<main class="main-container">
+  <h1>Hi {{ current_user.name }}!</h1>
+  <p>Customer Number: {{ current_user.id }}</p>
+  <p>Total orders: {{ orders.count() }}</p>
+  <table class="order-table">
+    <!-- <thead>
+      <tr>
+        <th>Total</th>
+        <th>Order</th>
+      </tr>
+    </thead> -->
+    <tbody>
+      {% for order in orders %}
+      <tr class="order-table-row">
+        <th class="order-table-cell order-table-head">
+          <p>{{ order.datetime.date() }}</p>
+          <p>{{ order.datetime.time() }}</p>
+        </th>
+        <td class="order-table-cell">
+          {% for pizza in order.orderData %}
+          <p>{{ pizza }} x {{ order.orderData[pizza]["quantity"] }} - {{ order.orderData[pizza]["price"] }}</p>
+          {% endfor %}
+          <p>{{ order.total }}</p>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</main>
+{% endblock %}

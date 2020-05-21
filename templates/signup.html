@@ -1,0 +1,24 @@
+{% extends "layout.html" %} {% block title %} Signup {% endblock %} {% block
+content %}
+<main class="main-container">
+  <form class="order-form" method="POST" action="/signup">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="form-cell">
+      {{ messages[0] }}. Go to <a href="{{ url_for('login') }}">Login page</a>
+    </div>
+    {% endif %}
+    {% endwith %}
+    <div class="form-cell">
+      <input type="email" name="email" placeholder="Email:" />
+    </div>
+    <div class="form-cell">
+      <input type="text" name="name" placeholder="Name" />
+    </div>
+    <div class="form-cell">
+      <input type="password" name="password" placeholder="Password" />
+    </div>
+    <button type="submit">Sign up</button>
+  </form>
+</main>
+{% endblock %}
