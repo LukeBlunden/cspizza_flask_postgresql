@@ -1,6 +1,6 @@
 :root {
   --primary-orange: rgb(249, 204, 157);
-  --medium-grey: #D3D3D3;
+  --medium-grey: #d3d3d3;
 }
 
 *,
@@ -213,11 +213,8 @@ html {
   border: 3px solid black;
 }
 
-.order-table-row {
-}
-
 .order-table-row:nth-child(even) {
-  background-color: var(--medium-grey)
+  background-color: var(--medium-grey);
 }
 
 .order-table-cell {
@@ -227,4 +224,82 @@ html {
 
 .order-table-head {
   border-right: 3px solid black;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.profile-bar {
+  border-right: 3px solid black;
+  padding: 3rem;
+}
+
+.profile-name {
+  font-size: 4rem;
+}
+
+.profile-info {
+  font-size: 1.6rem;
+  margin-top: 2rem;
+}
+
+.hero-container {
+  height: 55rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+    url("../assets//header.jpg");
+  background-size: cover;
+  text-align: center;
+}
+
+.hero-header {
+  color: white;
+  font-size: 4rem;
+  padding-top: 20rem;
+}
+
+.hero-text {
+  color: white;
+  font-size: 2.4rem;
+  padding: 5rem 0;
+}
+
+.button {
+  background-color: var(--medium-grey);
+  border: 4px solid black;
+  color: black;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  margin: 1rem auto;
+  font-size: 1.6rem;
+}
+
+.button:hover {
+  background-color: var(--primary-orange);
+}
+
+.form-input {
+  border: 3px solid black;
+  padding: 0.5rem 1rem;
+}
+
+.form-input:focus {
+  outline: 4px solid var(--primary-orange);
+  outline-offset: 0px;
+}
+
+.checkbox-label {
+  border: 3px solid black;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+}
+
+.form-checkbox {
+  display: none;
+}
+
+.form-checkbox:checked ~ .checkbox-label {
+  background-color: var(--primary-orange);
 }

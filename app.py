@@ -1,14 +1,16 @@
 # import requests
+import os
 from flask import Flask, render_template, request, redirect, session, url_for, flash
 from flask_login import LoginManager, login_user,logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 import json
 
+# Config stuff 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///cspizza"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config['SECRET_KEY'] = 'XF!1E18U&Ci!eLr*zfB7s&1$ZKtv^9'
+app.config['SECRET_KEY'] = 'XF!1E18U&Ci!eLr*zfB7s&1$ZKtv^9D'
 # app.config['TEMPLATES_AUTO_RELOAD'] = True
 # app.jinja_env.auto_reload = True
 
@@ -43,7 +45,7 @@ def login():
       return redirect(url_for("login")) # if user doesn't exist or password is wrong redirect to login
     # If the user passes the check redirect to orders/ profile  
     login_user(user, remember=remember)
-    return redirect(url_for("login"))
+    return redirect(url_for("order"))
   return render_template("login.html")
 
 @app.route("/signup", methods=["GET", "POST"])

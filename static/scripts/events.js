@@ -79,6 +79,15 @@ function addCartHandler(e) {
   quantity.value = "0";
 }
 
+function checkBoxHandler(e) {
+  e.preventDefault();
+  const box = e.target.children[0];
+  box.checked = !box.checked;
+  console.log(box.checked)
+  box.checked == false ? e.target.style.backgroundColor = "initial" : e.target.style.backgroundColor = "#f9cc9d";
+  // e.target.style.backgroundColor = "#9df9cc"
+}
+
 const stepperBtns = document.querySelectorAll(".stepper-button");
 for (let button of stepperBtns) {
   button.addEventListener("click", stepperHandler);
@@ -87,4 +96,9 @@ for (let button of stepperBtns) {
 const addCartBtns = document.querySelectorAll(".add-cart");
 for (let button of addCartBtns) {
   button.addEventListener("click", addCartHandler);
+}
+
+const checkBoxLabels = document.querySelectorAll(".checkbox-label");
+for (let label of checkBoxLabels) {
+  label.addEventListener("click", checkBoxHandler);
 }
