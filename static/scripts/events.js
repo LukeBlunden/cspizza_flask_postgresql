@@ -103,14 +103,20 @@ for (let label of checkBoxLabels) {
   label.addEventListener("click", checkBoxHandler);
 }
 
-document.querySelector(".dropdown-button").addEventListener("click", () => {
-  const content = document.querySelector(".dropdown-content");
-  content.style.display === "none" || !content.style.display ? content.style.display = "flex" : content.style.display = "none";
-})
+const dropdownButton = document.querySelector(".dropdown-button");
+if (dropdownButton) {
+  dropdownButton.addEventListener("click", () => {
+    const content = document.querySelector(".dropdown-content");
+    content.style.display === "none" || !content.style.display ? content.style.display = "flex" : content.style.display = "none";
+  })
+}
 
-document.querySelector(".cart-dropdown-button").addEventListener("click", (e) => {
-  const button = e.target;
-  button.src === `${window.location.protocol}//${window.location.host}/static/assets/pizza.png` ? button.src = `${window.location.protocol}//${window.location.host}/static/assets/pizzaopen.png` : button.src = `${window.location.protocol}//${window.location.host}/static/assets/pizza.png`;
-  const cartContent = document.querySelector("#cart-container");
-  cartContent.style.display === "none" || !cartContent.style.display ? cartContent.style.display = "block" : cartContent.style.display = "none";
-})
+const cartDropdownButton = document.querySelector(".cart-dropdown-button");
+if (cartDropdownButton) {
+  cartDropdownButton.addEventListener("click", (e) => {
+    const button = e.target;
+    button.src === `${window.location.protocol}//${window.location.host}/static/assets/pizza.png` ? button.src = `${window.location.protocol}//${window.location.host}/static/assets/pizzaopen.png` : button.src = `${window.location.protocol}//${window.location.host}/static/assets/pizza.png`;
+    const cartContent = document.querySelector("#cart-container");
+    cartContent.style.display === "none" || !cartContent.style.display ? cartContent.style.display = "block" : cartContent.style.display = "none";
+  })
+}
