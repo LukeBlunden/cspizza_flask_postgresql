@@ -60,6 +60,10 @@ def signup():
       flash("Email address already exists")
       return redirect(url_for("signup"))
 
+    if len(password) < 6:
+      flash("Please use a longer password")
+      return redirect(url_for("signup"))
+
     new_user = User(email=email, name=name, password=generate_password_hash(password, method="sha256"))
     db.session.add(new_user)
     db.session.commit()

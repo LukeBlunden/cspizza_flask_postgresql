@@ -1,32 +1,43 @@
 {% extends "layout.html" %} {% block title %} Order some pizza {% endblock %} {%
 block content %}
 <main class="main-container">
-  <form id="cart-container" action="/order" method="POST">
-    <h2>Pizza Cart</h2>
+  <form class="cart-form" action="/order" method="POST">
+    <button type="button" class="cart-dropdown-button">
+      <img src="../static/assets/pizza.png" alt="closed menu icon">
+    </button>
 
-    <div id="cart-items">
-      <template id="cart-item-template">
-        <div class="cart-item">
-          <h4 class="cart-item-name" id="itemName" >{{ itemName }}</h4>
-          <!-- <input type="hidden" id="itemNameInput"> -->
-          <input type="hidden" name="itemName" id="itemNameInput">
-          <p class="cart-item-quantity" id="itemQuantity" name="itemQuantity" >{{ itemQuantity }}</p>
-          <!-- <input type="hidden" id="itemQuantityInput"> -->
-          <input type="hidden" name="itemQuantity" id="itemQuantityInput">
-          <hr class="cart-item-line" />
-          <p class="cart-item-price" id="itemPrice" name="itemPrice" >{{ itemPrice }}</p>
-          <!-- <input type="hidden" id="itemPriceInput"> -->
-          <input type="hidden" name="itemPrice" id="itemPriceInput">
-        </div>
-      </template>
+    <div id="cart-container">
+      <h2>Pizza Cart</h2>
+
+      <div id="cart-items">
+        <template id="cart-item-template">
+          <div class="cart-item">
+            <h4 class="cart-item-name" id="itemName">{{ itemName }}</h4>
+            <!-- <input type="hidden" id="itemNameInput"> -->
+            <input type="hidden" name="itemName" id="itemNameInput" />
+            <p class="cart-item-quantity" id="itemQuantity" name="itemQuantity">
+              {{ itemQuantity }}
+            </p>
+            <!-- <input type="hidden" id="itemQuantityInput"> -->
+            <input type="hidden" name="itemQuantity" id="itemQuantityInput" />
+            <hr class="cart-item-line" />
+            <p class="cart-item-price" id="itemPrice" name="itemPrice">
+              {{ itemPrice }}
+            </p>
+            <!-- <input type="hidden" id="itemPriceInput"> -->
+            <input type="hidden" name="itemPrice" id="itemPriceInput" />
+          </div>
+        </template>
+      </div>
+
+      <div class="cart-total">
+        <h3 class="cart-total-head">TOTAL</h3>
+        <p id="cart-total-price" data-price="0" name="totalPrice">$0.00</p>
+        <input type="hidden" name="totalPrice" id="totalPriceInput" />
+      </div>
+      <button type="submit" class="button">Place Order</button>
     </div>
-    
-    <div class="cart-total">
-      <h3 class="cart-total-head">TOTAL</h3>
-      <p id="cart-total-price" data-price="0" name="totalPrice" >$0.00</p>
-      <input type="hidden" name="totalPrice" id="totalPriceInput">
-    </div>
-    <button type="submit" class="button">Place Order</button>
+
   </form>
 
   <div class="order-form">
@@ -45,7 +56,7 @@ block content %}
         </p>
         <p class="form-price">$12.00</p>
       </div>
-      <div class="form-input">
+      <div class="order-button-wrap">
         <div class="stepper-wrap">
           <button type="button" class="stepper-button">-</button>
           <div class="stepper-input-wrap">
@@ -84,7 +95,7 @@ block content %}
         </p>
         <p class="form-price">$14.00</p>
       </div>
-      <div class="form-input">
+      <div class="order-button-wrap">
         <div class="stepper-wrap">
           <button type="button" class="stepper-button">-</button>
           <div class="stepper-input-wrap">
@@ -116,7 +127,7 @@ block content %}
         <p class="form-description-text">Just pepperoni all by itself</p>
         <p class="form-price">$13.00</p>
       </div>
-      <div class="form-input">
+      <div class="order-button-wrap">
         <div class="stepper-wrap">
           <button type="button" class="stepper-button">-</button>
           <div class="stepper-input-wrap">
@@ -148,7 +159,7 @@ block content %}
         <p class="form-description-text">Bag of mush, all you need</p>
         <p class="form-price">$22.00</p>
       </div>
-      <div class="form-input">
+      <div class="order-button-wrap">
         <div class="stepper-wrap">
           <button type="button" class="stepper-button">-</button>
           <div class="stepper-input-wrap">

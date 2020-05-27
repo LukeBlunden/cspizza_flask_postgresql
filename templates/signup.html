@@ -1,27 +1,40 @@
 {% extends "layout.html" %} {% block title %} Signup {% endblock %} {% block
 content %}
 <main class="main-container">
-  <form class="order-form" method="POST" action="/signup">
-    {% with messages = get_flashed_messages() %}
+  <form class="login-form" method="POST" action="/signup">
+    {% with messages = get_flashed_messages() %} 
     {% if messages %}
-    <div class="form-cell">
-      {{ messages[0] }}. Go to <a href="{{ url_for('login') }}">Login page</a>
+    <div class="warning">
+      <!-- {{ messages[0] }} -->
+      {% if messages[0] == "Email address already exists" %}
+        {{ messages[0] }}. Go to <a href="{{ url_for('login') }}">Login page</a>
+      {% endif %}
+      {% if messages[0] == "Please use a longer password" %}
+        {{ messages[0] }}. 
+        <p>(min 6 characters)</p>
+      {% endif %}
     </div>
-    {% endif %}
-    {% endwith %}
-    <div class="form-cell">
-      <input type="email" name="email" placeholder="Email:" />
+    {% endif %} {% endwith %}
+    <div class="login-form-cell">
+      <input
+        type="email"
+        name="email"
+        placeholder="Email:"
+        class="form-input"
+      />
     </div>
-    <div class="form-cell">
-      <input type="text" name="name" placeholder="Name" />
+    <div class="login-form-cell">
+      <input type="text" name="name" placeholder="Name" class="form-input" />
     </div>
-    <div class="form-cell">
-      <input type="password" name="password" placeholder="Password" />
+    <div class="login-form-cell">
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        class="form-input"
+      />
     </div>
-    <div class="form-cell">
-      
-    </div>
-    <button type="submit">Sign up</button>
+    <button type="submit" class="button login-button-wide">Sign up</button>
   </form>
 </main>
 {% endblock %}

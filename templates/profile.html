@@ -1,37 +1,44 @@
 {% extends "layout.html" %} {% block title %} Profile {% endblock %} {% block
 content %}
 <main class="profile">
-    <div class="profile-bar">
-      <h1 class="profile-name">Hi {{ current_user.name }}!</h1>
-      <p class="profile-info">Customer Number: {{ current_user.id }}</p>
-      <p class="profile-info">Total orders: {{ orders.count() }}</p>
-    </div>
-    <table class="order-table">
-      <!-- <thead>
+  <div class="profile-bar">
+    <h1 class="profile-name">Hi {{ current_user.name }}!</h1>
+    <p class="profile-info">Customer Number: {{ current_user.id }}</p>
+    <p class="profile-info">Total orders: {{ orders.count() }}</p>
+  </div>
+  <table class="order-table">
+    <!-- <thead>
         <tr>
           <th>Total</th>
           <th>Order</th>
         </tr>
       </thead> -->
-      <tbody>
-        {% for order in orders %}
-        <tr class="order-table-row">
-          <th class="order-table-cell order-table-head">
-            <p>{{ order.datetime.date() }}</p>
-            <p>{{ order.datetime.time() }}</p>
-          </th>
-          <td class="order-table-cell">
-            {% for pizza in order.orderData %}
-            <p>
-              {{ pizza }} x {{ order.orderData[pizza]["quantity"] }} - {{
-              order.orderData[pizza]["price"] }}
-            </p>
-            {% endfor %}
-            <p>{{ order.total }}</p>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <tbody>
+      {% for order in orders %}
+      <tr class="order-table-row">
+        <th class="order-table-cell order-table-head">
+          <p>{{ order.datetime.date().strftime("%d/%m/%Y") }}</p>
+          <!-- <p>{{ order.datetime.time().strftime("%H:%M") }}</p> -->
+        </th>
+        <td class="order-table-cell">
+          {% for pizza in order.orderData %}
+          <div class="pizza-order-wrapper">
+            <p>{{ order.orderData[pizza]["quantity"] }} x</p>
+            <p>{{ pizza }}</p>
+            <p>${{ order.orderData[pizza]["price"] }}</p>
+          </div>
+          <!-- <p>
+            {{ pizza }} x {{ order.orderData[pizza]["quantity"] }} - {{ order.orderData[pizza]["price"] }}
+          </p> -->
+          {% endfor %}
+          <div class="pizza-order-wrapper" style="border-top: 2px solid black; padding-top: 2rem;">
+            <p style="grid-column: 2 / 3; justify-self: flex-end;">Total: </p>
+            <p style="grid-column: 3 / 4; font-weight: bold;" >${{ order.total }}</p>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </main>
 {% endblock %}
